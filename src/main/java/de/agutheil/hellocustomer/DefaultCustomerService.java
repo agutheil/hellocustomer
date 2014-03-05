@@ -3,12 +3,13 @@ package de.agutheil.hellocustomer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("customerService")
 public class DefaultCustomerService implements CustomerService {
 	
-	@Autowired
+	
 	private CustomerDAO customerDAO;
 
+	@Autowired
 	public DefaultCustomerService(CustomerDAO customerDAO) {
 		super();
 		this.customerDAO = customerDAO;
