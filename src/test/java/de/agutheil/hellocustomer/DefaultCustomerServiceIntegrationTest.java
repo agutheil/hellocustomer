@@ -12,10 +12,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import de.agutheil.hellocustomer.api.Customer;
 import de.agutheil.hellocustomer.api.CustomerDAO;
 import de.agutheil.hellocustomer.api.CustomerService;
-import de.agutheil.hellocustomer.config.AppCon;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {AppCon.class})
+@ContextConfiguration("/app-conf-no-scan.xml")
 public class DefaultCustomerServiceIntegrationTest {
 	
 	static final long CUSTOMER_ID = 1;
