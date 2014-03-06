@@ -9,13 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-@Repository("h2customerDAO")
+@Repository("customerDAO")
 public class H2CustomerDAO implements CustomerDAO {
 	
-	public static final long START_ID = 1000;
+	public static final int START_ID = 1000;
 	
-	private long currentID = START_ID;
+	private int currentID = START_ID;
 	
 	private JdbcTemplate jdbcTemplate;
 
@@ -27,16 +28,17 @@ public class H2CustomerDAO implements CustomerDAO {
 	}
 
 	@Override
+	
 	public Customer findCustomerById(long id) {
 		Customer customer = this.jdbcTemplate.queryForObject(
-		        "select id, first_name, last_name from t_actor where id = ?",
+		        "select ID, FIRSTNAME, LASTNAME from CUSTOMER where ID = ?",
 		        new Object[]{id},
 		        new RowMapper<Customer>() {
 		            public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
 		            	Customer customer = new Customer();
-		            	customer.setFirstname(rs.getString("first_name"));
-		            	customer.setLastname(rs.getString("last_name"));
-		            	customer.setId(rs.getLong("id"));
+		            	customer.setFirstname(rs.getString("FIRSTNAME"));
+		            	customer.setLastname(rs.getString("LASTNAME"));
+		            	customer.setId(rs.getLong("ID"));
 		                return customer;
 		            }
 		        });
@@ -45,10 +47,11 @@ public class H2CustomerDAO implements CustomerDAO {
 
 	@Override
 	public Customer createCustomer(String firstname, String lastname) {
+		currentID = currentID + 10;
 		this.jdbcTemplate.update(
-		        "insert into customer (id, first_name, last_name) values (?, ?, ?)",
-		        currentID++, firstname, lastname);
-		return findCustomerById(currentID);
+		        "insert into CUSTOMER (ID, FIRSTNAME, LASTNAME) values (?,?, ?)",
+		         currentID, firstname, lastname);
+		return new Customer(currentID, firstname, lastname);
 	}
 
 }

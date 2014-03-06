@@ -14,8 +14,7 @@ public class H2AppCon {
 	@Bean
 	DataSource dataSource(){
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-//	    builder.setType(EmbeddedDatabaseType.H2).addScript("my-schema.sql").addScript("my-test-data.sql");
-	    builder.setType(EmbeddedDatabaseType.H2);
+	    builder.setType(EmbeddedDatabaseType.H2).addScript("schema.sql").addScript("test-data.sql");
 	    return builder.build();
 	}
 }
