@@ -4,6 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import de.agutheil.hellocustomer.api.Customer;
+import de.agutheil.hellocustomer.api.CustomerDAO;
+import de.agutheil.hellocustomer.api.CustomerService;
+import de.agutheil.hellocustomer.impl.DefaultCustomerService;
+
 public class DefaultCustomerServiceTest {
 	static final long CUSTOMER_ID = 1;
 	static final String CUSTOMER_FIRST_NAME = "John";

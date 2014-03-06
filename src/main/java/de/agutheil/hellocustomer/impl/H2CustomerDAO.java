@@ -1,4 +1,4 @@
-package de.agutheil.hellocustomer;
+package de.agutheil.hellocustomer.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,14 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-@Repository("customerDAO")
+import de.agutheil.hellocustomer.api.Customer;
+import de.agutheil.hellocustomer.api.CustomerDAO;
+
+//@Repository("customerDAO")
 public class H2CustomerDAO implements CustomerDAO {
 	
 	public static final int START_ID = 1000;
 	
-	private int currentID = START_ID;
+	private long currentID = START_ID;
 	
 	private JdbcTemplate jdbcTemplate;
 
@@ -24,7 +26,6 @@ public class H2CustomerDAO implements CustomerDAO {
 	public H2CustomerDAO(DataSource dataSource) {
 		super();
 		jdbcTemplate = new JdbcTemplate(dataSource);
-		
 	}
 
 	@Override

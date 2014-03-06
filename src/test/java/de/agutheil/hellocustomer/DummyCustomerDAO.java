@@ -1,5 +1,8 @@
 package de.agutheil.hellocustomer;
 
+import de.agutheil.hellocustomer.api.Customer;
+import de.agutheil.hellocustomer.api.CustomerDAO;
+
 public class DummyCustomerDAO implements CustomerDAO {
 	
 	public static final int DUMMY_START_ID = 666;
@@ -16,7 +19,7 @@ public class DummyCustomerDAO implements CustomerDAO {
 		if (customer.getId() == id) {
 			return customer;
 		} else {
-			return null;
+			throw new RuntimeException();
 		}
 		
 	}

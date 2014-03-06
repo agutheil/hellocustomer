@@ -1,4 +1,4 @@
-package de.agutheil.hellocustomer;
+package de.agutheil.hellocustomer.api;
 
 public class Customer {
 	private long id;

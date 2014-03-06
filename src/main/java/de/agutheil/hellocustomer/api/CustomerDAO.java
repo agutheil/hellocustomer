@@ -1,4 +1,4 @@
-package de.agutheil.hellocustomer;
+package de.agutheil.hellocustomer.api;
 
 public interface CustomerDAO {
 

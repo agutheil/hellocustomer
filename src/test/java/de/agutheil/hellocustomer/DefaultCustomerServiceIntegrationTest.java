@@ -9,8 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import de.agutheil.hellocustomer.api.Customer;
+import de.agutheil.hellocustomer.api.CustomerDAO;
+import de.agutheil.hellocustomer.api.CustomerService;
+import de.agutheil.hellocustomer.config.AppCon;
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {RuntimeApplicationConfiguration.class})
+@ContextConfiguration(classes = {AppCon.class})
 public class DefaultCustomerServiceIntegrationTest {
 	
 	static final long CUSTOMER_ID = 1;
@@ -24,15 +29,11 @@ public class DefaultCustomerServiceIntegrationTest {
 	CustomerService customerService;
 	
 	@Test
-	public void testThatCustomerIsCreated() {
-		Customer customer = customerService.createCustomer(CUSTOMER_FIRST_NAME, CUSTOMER_LAST_NAME);
-		assertNotNull(customer);
-		assertEquals(CUSTOMER_FIRST_NAME, customer.getFirstname());
-		assertEquals(CUSTOMER_LAST_NAME, customer.getLastname());
+	public void testThatCustomerIsCreatedAndFoundById() {
+		test();
 	}
-	
-	@Test
-	public void testThatCustomerIsFoundById() {
+
+	private void test() {
 		Customer customer = customerService.createCustomer(CUSTOMER_FIRST_NAME, CUSTOMER_LAST_NAME);
 		customer = customerService.findCustomerById(customer.getId());
 		assertNotNull(customer.getId());
