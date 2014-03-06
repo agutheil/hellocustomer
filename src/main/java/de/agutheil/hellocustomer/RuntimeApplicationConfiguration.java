@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(basePackages="de.agutheil.hellocustomer")
-public class DefaultApplicationConfiguration {
+public class RuntimeApplicationConfiguration {
 	@Bean
 	CustomerDAO customerDAO(){
 		CustomerDAO customerDAO = new RuntimeCustomerDAO();

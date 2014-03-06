@@ -10,7 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {DefaultApplicationConfiguration.class})
+@ContextConfiguration(classes = {RuntimeApplicationConfiguration.class})
 public class DefaultCustomerServiceIntegrationTest {
 	
 	static final long CUSTOMER_ID = 1;

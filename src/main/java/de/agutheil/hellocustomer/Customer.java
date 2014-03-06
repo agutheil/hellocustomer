@@ -4,10 +4,22 @@ public class Customer {
 	private long id;
 	private String firstname;
 	private String lastname;
+	public Customer() {
+		super();
+	}
 	public Customer(long id, String firstname, String lastname) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
+		this.lastname = lastname;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
 	public long getId() {
