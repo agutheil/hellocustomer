@@ -8,10 +8,12 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import de.agutheil.hellocustomer.api.Customer;
 import de.agutheil.hellocustomer.api.CustomerDAO;
 
+@Repository("customerDAO")
 public class H2CustomerDAO implements CustomerDAO {
 	
 	public static final int START_ID = 1000;

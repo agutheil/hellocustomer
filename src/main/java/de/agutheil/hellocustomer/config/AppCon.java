@@ -14,20 +14,12 @@ import de.agutheil.hellocustomer.impl.DefaultCustomerService;
 import de.agutheil.hellocustomer.impl.H2CustomerDAO;
 
 @Configuration
+@ComponentScan(basePackages={"de.agutheil.hellocustomer.impl"})
 public class AppCon {
 	@Bean
 	DataSource dataSource(){
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
 	    builder.setType(EmbeddedDatabaseType.H2).addScript("schema.sql").addScript("test-data.sql");
 	    return builder.build();
-	}
-	@Bean
-	CustomerDAO customerDAO(DataSource dataSource){
-		return new H2CustomerDAO(dataSource);
-	}
-	
-	@Bean
-	CustomerService customerService(CustomerDAO customerDAO){
-		return new DefaultCustomerService(customerDAO);
 	}
 }
